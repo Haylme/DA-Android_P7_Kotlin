@@ -1,7 +1,6 @@
 package com.openclassrooms.arista.data.repository
 
 import com.openclassrooms.arista.dao.UserDtoDao
-import com.openclassrooms.arista.data.FakeApiService
 import com.openclassrooms.arista.domain.model.User
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

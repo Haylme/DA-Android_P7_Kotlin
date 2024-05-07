@@ -1,5 +1,5 @@
 package com.openclassrooms.arista.data
-
+/**
 import com.openclassrooms.arista.domain.model.Exercise
 import com.openclassrooms.arista.domain.model.ExerciseCategory
 import com.openclassrooms.arista.domain.model.Sleep
@@ -54,3 +54,4 @@ class FakeApiService {
         exerciseData.remove(exercise)
     }
 }
+**/

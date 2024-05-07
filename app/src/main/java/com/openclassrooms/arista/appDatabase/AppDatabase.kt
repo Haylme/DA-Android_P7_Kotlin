@@ -1,12 +1,14 @@
 package com.openclassrooms.arista.appDatabase
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.openclassrooms.arista.dao.ExerciseDtoDao
 import com.openclassrooms.arista.dao.SleepDtoDao
 import com.openclassrooms.arista.dao.UserDtoDao
+import com.openclassrooms.arista.data.entity.ExerciseDto
 import com.openclassrooms.arista.data.entity.SleepDto
 import com.openclassrooms.arista.data.entity.UserDto
 import kotlinx.coroutines.CoroutineScope
@@ -14,6 +16,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
+@Database(entities = [UserDto::class, SleepDto::class, ExerciseDto::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDtoDao(): UserDtoDao
     abstract fun sleepDtoDao(): SleepDtoDao

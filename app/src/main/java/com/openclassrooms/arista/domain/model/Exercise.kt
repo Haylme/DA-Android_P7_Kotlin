@@ -17,11 +17,15 @@ data class Exercise(
 
         fun fromDto(dto: ExerciseDto): Exercise {
 
+            val category = ExerciseCategory.values().firstOrNull {
+                it.name.equals(dto.category, ignoreCase = true)
+            } ?: throw IllegalArgumentException("Invalid category: ${dto.category}")
+
             return Exercise(
                 id = dto.id,
                 startTime = LocalDateTime.ofEpochSecond(dto.startTime / 1000, 0, ZoneOffset.UTC),
                 duration = dto.duration,
-                category = ExerciseCategory.valueOf(dto.category.uppercase()),
+                category = category,
                 intensity = dto.intensity
             )
 
