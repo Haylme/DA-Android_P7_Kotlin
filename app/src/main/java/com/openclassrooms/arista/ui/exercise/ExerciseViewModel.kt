@@ -54,4 +54,6 @@ class ExerciseViewModel @Inject constructor(
         }
 
     }
+
+    
 }
