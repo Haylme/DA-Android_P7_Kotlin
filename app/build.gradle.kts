@@ -45,6 +45,10 @@ android {
 
 dependencies {
 
+
+    testImplementation("org.assertj:assertj-core:3.25.3")
+
+
     testImplementation ("io.mockk:mockk:1.9.3")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
@@ -62,16 +66,16 @@ dependencies {
 
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
+    implementation("com.google.dagger:hilt-android:2.42")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
     kapt("com.google.dagger:hilt-android-compiler:2.42")
 
-    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.12.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.activity:activity-ktx:1.9.0")
-    implementation("androidx.fragment:fragment-ktx:1.7.0")
+    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
