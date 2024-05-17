@@ -14,11 +14,11 @@ interface SleepDtoDao {
     @Insert
     suspend fun insertSleep(sleep: SleepDto):Long
 
-    @Query("SELECT * FROM sleep")
-    fun getAllSleep(): Flow<List<SleepDto>>
+    @Query("SELECT * FROM sleep WHERE user_id = :userId")
+    fun getAllSleep(userId: Long): Flow<List<SleepDto>>
 
-    @Query("DELETE FROM sleep WHERE id = :id")
-    fun deleteSleepById (id:Long)
+    @Query("DELETE FROM sleep WHERE user_id = :userId")
+    fun deleteSleepById (userId:Long)
 
 
 

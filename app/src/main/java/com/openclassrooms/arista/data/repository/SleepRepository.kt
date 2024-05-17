@@ -9,9 +9,9 @@ class SleepRepository(private val sleepDao: SleepDtoDao) {
     // Get all sleep records
 
 
-    suspend fun getAllSleep(): List<Sleep> {
+    suspend fun getAllSleep(userId: Long): List<Sleep> {
 
-        return sleepDao.getAllSleep()
+        return sleepDao.getAllSleep(userId)
             .first()
             .map { Sleep.fromDto(it) }
 
@@ -29,7 +29,7 @@ class SleepRepository(private val sleepDao: SleepDtoDao) {
     suspend fun deleteSleep(sleep: Sleep){
 
         sleep.id?.let {
-            sleepDao.deleteSleepById(id = it)
+            sleepDao.deleteSleepById(userId = sleep.userId)
         }
 
     }

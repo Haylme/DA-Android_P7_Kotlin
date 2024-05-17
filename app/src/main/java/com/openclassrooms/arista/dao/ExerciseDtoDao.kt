@@ -15,12 +15,12 @@ interface ExerciseDtoDao {
     suspend fun insertExercise(exercise: ExerciseDto): Long
 
 
-    @Query("SELECT * FROM exercise")
-    fun getAllExercises(): Flow<List<ExerciseDto>>
+    @Query("SELECT * FROM exercise WHERE user_id = :userId")
+    fun getAllExercises(userId: Long): Flow<List<ExerciseDto>>
 
 
-    @Query("DELETE FROM exercise WHERE id = :id")
-    suspend fun deleteExerciseById(id: Long)
+    @Query("DELETE FROM exercise WHERE user_id = :userId")
+    suspend fun deleteExerciseById(userId: Long)
 
 
 

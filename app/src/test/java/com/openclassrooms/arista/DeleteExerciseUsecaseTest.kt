@@ -28,7 +28,7 @@ class DeleteExerciseUsecaseTest {
   @Before
   fun setup() {
 
-      MockitoAnnotations.initMocks(this)
+      MockitoAnnotations.openMocks(this)
       deleteExerciseUseCase = DeleteExerciseUseCase(exerciseRepository)
 
 

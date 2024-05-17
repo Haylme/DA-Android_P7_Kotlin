@@ -8,8 +8,8 @@ class ExerciseRepository(private val exerciseDao: ExerciseDtoDao) {
 
 
     // Get all exercises
-    suspend fun getAllExercises(): List<Exercise> {
-        return exerciseDao.getAllExercises()
+    suspend fun getAllExercises(userId: Long): List<Exercise> {
+        return exerciseDao.getAllExercises(userId)
             .first() // Collect the first emission of the Flow
             .map { Exercise.fromDto(it) } // Convert every DTO in Exercise
     }
@@ -26,7 +26,7 @@ class ExerciseRepository(private val exerciseDao: ExerciseDtoDao) {
         // If there is no id, you can raise an exception and catch it in the use case and viewmodel
         exercise.id?.let {
             exerciseDao.deleteExerciseById(
-                id = exercise.id,
+                userId = exercise.userId,
             )
         }
     }

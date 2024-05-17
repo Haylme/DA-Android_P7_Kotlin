@@ -30,7 +30,7 @@ class AddNewExerciceUsecaseTest {
     @Before
     fun setUp() {
         // Initialize the mock repository
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
 
         // Initialize the use case with the mock repository
         addNewExerciseUseCase = AddNewExerciseUseCase(exerciseRepository)

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class UserDto(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "userId")
     var id : Long = 0,
 
     @ColumnInfo(name = "nom")

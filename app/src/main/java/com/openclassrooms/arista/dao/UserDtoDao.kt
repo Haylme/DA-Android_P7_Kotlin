@@ -13,10 +13,10 @@ interface UserDtoDao {
     @Insert
     suspend fun insertUser(user : UserDto):Long
 
-    @Query("SELECT * FROM user WHERE id = :id")
+    @Query("SELECT * FROM user WHERE userId = :id")
     fun getUserById (id: Long): Flow<UserDto>
 
-    @Query("DELETE FROM user WHERE id = :id")
+    @Query("DELETE FROM user WHERE userId = :id")
     suspend fun deleteUserById (id:Long)
 
 }

@@ -28,7 +28,7 @@ class GetUserUsecaseTest {
     @Before
     fun setup() {
 
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
 
         getUserUsecase = GetUserUsecase(userRepository)
 

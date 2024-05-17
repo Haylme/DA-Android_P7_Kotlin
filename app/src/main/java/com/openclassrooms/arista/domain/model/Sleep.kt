@@ -8,7 +8,8 @@ data class Sleep(
     @JvmField val id: Long? = null,
     var startTime: LocalDateTime,
     var duration: Int,
-    var quality: Int
+    var quality: Int,
+     var userId: Long
 ) {
 
 
@@ -21,7 +22,8 @@ data class Sleep(
                 id = dto.id,
                 startTime = LocalDateTime.ofEpochSecond(dto.startTime / 1000, 0, ZoneOffset.UTC),
                 duration = dto.duration,
-                quality = dto.quality
+                quality = dto.quality,
+                userId = dto.userId
 
             )
 
@@ -36,7 +38,8 @@ data class Sleep(
             id = this.id ?: 0,
             startTime = this.startTime.toEpochSecond(ZoneOffset.UTC) * 1000,
             duration = this.duration,
-            quality = this.quality
+            quality = this.quality,
+            userId = this.userId
 
 
         )

@@ -9,8 +9,11 @@ data class Exercise(
     var startTime: LocalDateTime,
     var duration: Int,
     var category: ExerciseCategory,
-    var intensity: Int
+    var intensity: Int,
+    val userId: Long
 ) {
+
+
 
     companion object {
 
@@ -26,7 +29,8 @@ data class Exercise(
                 startTime = LocalDateTime.ofEpochSecond(dto.startTime / 1000, 0, ZoneOffset.UTC),
                 duration = dto.duration,
                 category = category,
-                intensity = dto.intensity
+                intensity = dto.intensity,
+                userId = dto.userId
             )
 
         }
@@ -40,7 +44,8 @@ data class Exercise(
             startTime = this.startTime.toEpochSecond(ZoneOffset.UTC) * 1000,
             duration = this.duration,
             category = this.category.name.uppercase(),
-            intensity = this.intensity
+            intensity = this.intensity,
+            userId = this.userId
         )
 
     }
