@@ -51,7 +51,8 @@ class DeleteExerciseUsecaseTest {
             startTime = LocalDateTime.now(),
             duration = 30,
             category = ExerciseCategory.Football,
-            intensity = 8
+            intensity = 8,
+            userId = 1
 
 
         )

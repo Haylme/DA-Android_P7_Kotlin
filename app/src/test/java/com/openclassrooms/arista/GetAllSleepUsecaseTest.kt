@@ -45,7 +45,8 @@ class GetAllSleepUsecaseTest {
             Sleep(
                 startTime = LocalDateTime.now(),
                 duration = 30,
-                quality = 9
+                quality = 9,
+                userId = 1
             )
         )
 

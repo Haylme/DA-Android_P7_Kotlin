@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey
 
         ForeignKey(
             entity = UserDto::class,
-            parentColumns = arrayOf("id"),
+            parentColumns = arrayOf("userById"),
             childColumns = arrayOf("user_id"),
             onDelete = ForeignKey.CASCADE
 

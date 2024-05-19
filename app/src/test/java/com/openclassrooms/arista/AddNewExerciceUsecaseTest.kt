@@ -43,7 +43,9 @@ class AddNewExerciceUsecaseTest {
             startTime = LocalDateTime.now(),
             duration = 30,
             category = ExerciseCategory.Running,
-            intensity = 5
+            intensity = 5,
+            userId = 4
+
         )
 
         // Execute the use case with the fake exercise

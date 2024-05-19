@@ -30,7 +30,7 @@ class GetAllExercisesUseCaseTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
         getAllExercisesUseCase = GetAllExercisesUseCase(exerciseRepository)
     }
 
@@ -53,16 +53,18 @@ class GetAllExercisesUseCaseTest {
                 startTime = LocalDateTime.now(),
                 duration = 30,
                 category = ExerciseCategory.Running,
-                intensity = 5
+                intensity = 5,
+                userId = 1
             ),
             Exercise(
                 startTime = LocalDateTime.now().plusHours(1),
                 duration = 45,
                 category = ExerciseCategory.Riding,
-                intensity = 7
+                intensity = 7,
+                userId = 2
             )
         )
-        Mockito.`when`(exerciseRepository.getAllExercises()).thenReturn(fakeExercises)
+        Mockito.`when`(exerciseRepository.getAllExercises(1)).thenReturn(fakeExercises)
 
 
         // Act
@@ -77,7 +79,7 @@ class GetAllExercisesUseCaseTest {
     @Test
     fun `when repository returns empty list, use case should return empty list`() = runBlocking {
         // Arrange
-        Mockito.`when`(exerciseRepository.getAllExercises()).thenReturn(emptyList())
+        Mockito.`when`(exerciseRepository.getAllExercises(2)).thenReturn(emptyList())
 
 
         // Act
