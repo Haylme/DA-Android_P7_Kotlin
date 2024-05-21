@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.openclassrooms.arista.R
 import com.openclassrooms.arista.databinding.FragmentExerciseBinding
@@ -20,6 +21,7 @@ import com.openclassrooms.arista.domain.model.ExerciseCategory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
+import kotlin.properties.Delegates
 
 interface DeleteExerciseInterface {
     fun deleteExercise(exercise: Exercise?)
@@ -115,7 +117,8 @@ class ExerciseFragment : Fragment(), DeleteExerciseInterface {
         val newExercise =
             Exercise(System.currentTimeMillis(), LocalDateTime.now(), duration, category, intensity,userId
             )
-        viewModel.addNewExercise(newExercise)
+        viewModel.addNewExercise(newExercise, userId)
+        findNavController().popBackStack()
     }
 
     private fun validateDuration(duration: String): Boolean {
@@ -161,6 +164,14 @@ class ExerciseFragment : Fragment(), DeleteExerciseInterface {
     }
 
     override fun deleteExercise(exercise: Exercise?) {
-        exercise?.let { viewModel.deleteExercise(it) }
+        exercise?.let {
+           var userId:Long = 0
+
+            viewModel.deleteExercise(it,userId)
+                Toast.makeText(
+                    requireContext(),
+                    R.string.exercise)
+
+        }
     }
 }

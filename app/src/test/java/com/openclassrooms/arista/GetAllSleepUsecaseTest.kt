@@ -27,7 +27,7 @@ class GetAllSleepUsecaseTest {
     @Before
     fun setup() {
 
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
         getAllSleepUsecase = GetAllSleepsUseCase(sleepRepository)
     }
 
@@ -50,9 +50,9 @@ class GetAllSleepUsecaseTest {
             )
         )
 
-        Mockito.`when`(getAllSleepUsecase.execute()).thenReturn(fakeSleep)
+        Mockito.`when`(getAllSleepUsecase.execute(1)).thenReturn(fakeSleep)
 
-        val result = getAllSleepUsecase.execute()
+        val result = getAllSleepUsecase.execute(1)
 
         assertThat(result).isEqualTo(fakeSleep)
 

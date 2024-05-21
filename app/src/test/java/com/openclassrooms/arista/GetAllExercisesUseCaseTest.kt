@@ -68,7 +68,7 @@ class GetAllExercisesUseCaseTest {
 
 
         // Act
-        val result = getAllExercisesUseCase.execute()
+        val result = getAllExercisesUseCase.execute(1)
 
 
         // Assert
@@ -83,7 +83,7 @@ class GetAllExercisesUseCaseTest {
 
 
         // Act
-        val result = getAllExercisesUseCase.execute()
+        val result = getAllExercisesUseCase.execute(0)
 
 
         // Assert

@@ -21,6 +21,8 @@ class SleepFragment : Fragment() {
     private val viewModel: SleepViewModel by viewModels()
     private val sleepAdapter = SleepAdapter(emptyList())
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,9 +37,14 @@ class SleepFragment : Fragment() {
         setupObservers()
         binding.sleepRecyclerview.layoutManager = LinearLayoutManager(context)
         binding.sleepRecyclerview.adapter = sleepAdapter
-        viewModel.fetchSleeps()
+       collectFkId()
 
     }
+
+
+
+
+
 
     private fun setupObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -47,8 +54,29 @@ class SleepFragment : Fragment() {
         }
     }
 
+
+  private fun collectFkId() {
+      viewLifecycleOwner.lifecycleScope.launch {
+          viewModel.sleepFk.collect { userId ->
+              userId?.let {
+                  allSleeplist(it)
+              }
+          }
+      }
+  }
+
+
+
+private fun allSleeplist(userId: Long) {
+    viewModel.fetchSleeps(userId)
+}
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
+
+
 }

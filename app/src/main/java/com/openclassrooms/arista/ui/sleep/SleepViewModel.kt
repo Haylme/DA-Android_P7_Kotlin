@@ -16,22 +16,27 @@ import javax.inject.Inject
 class SleepViewModel @Inject constructor(
     private val getAllSleepsUseCase: GetAllSleepsUseCase,
 
-) :
+    ) :
     ViewModel() {
+
+    private val _sleepFk = MutableStateFlow<Long?>(null)
+    val sleepFk: StateFlow<Long?> = _sleepFk.asStateFlow()
+
+
     private val _sleeps = MutableStateFlow<List<Sleep>>(emptyList())
     val sleeps: StateFlow<List<Sleep>> = _sleeps.asStateFlow()
 
-    fun fetchSleeps() {
+    fun fetchSleeps(userId: Long) {
         viewModelScope.launch(Dispatchers.IO) {
 
-            val sleepList = getAllSleepsUseCase.execute()
+            _sleepFk.value = userId
+
+            val sleepList = getAllSleepsUseCase.execute(userId)
             _sleeps.value = sleepList
 
         }
 
     }
-
-
 
 
 }

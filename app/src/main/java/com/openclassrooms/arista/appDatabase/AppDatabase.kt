@@ -64,13 +64,13 @@ abstract class AppDatabase : RoomDatabase() {
             sleepDao.insertSleep(
                 SleepDto(
                     startTime = LocalDateTime.now().minusDays(1).atZone(ZoneOffset.UTC).toInstant()
-                        .toEpochMilli(), duration = 480, quality = 4
+                        .toEpochMilli(), duration = 480, quality = 4, userId = 0
                 )
             )
             sleepDao.insertSleep(
                 SleepDto(
                     startTime = LocalDateTime.now().minusDays(2).atZone(ZoneOffset.UTC).toInstant()
-                        .toEpochMilli(), duration = 450, quality = 3
+                        .toEpochMilli(), duration = 450, quality = 3, userId = 1
                 )
             )
 

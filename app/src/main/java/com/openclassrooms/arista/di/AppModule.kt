@@ -71,4 +71,9 @@ class AppModule {
     fun provideExerciseRepository(exerciseDtoDao: ExerciseDtoDao): ExerciseRepository {
         return ExerciseRepository(exerciseDtoDao)
     }
+
+
+
+
+
 }

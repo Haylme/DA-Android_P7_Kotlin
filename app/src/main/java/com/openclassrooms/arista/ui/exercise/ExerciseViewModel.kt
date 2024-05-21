@@ -15,30 +15,35 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ExerciseViewModel @Inject constructor(
+ class ExerciseViewModel @Inject constructor(
     private val getAllExercisesUseCase: GetAllExercisesUseCase,
     private val addNewExerciseUseCase: AddNewExerciseUseCase,
-    private val deleteExerciseUseCase: DeleteExerciseUseCase
+    private val deleteExerciseUseCase: DeleteExerciseUseCase,
+
 ) : ViewModel() {
     private val _exercisesFlow = MutableStateFlow<List<Exercise>>(emptyList())
     val exercisesFlow: StateFlow<List<Exercise>> = _exercisesFlow.asStateFlow()
 
-    init {
-        loadAllExercises()
-    }
+    private val _exerciseFk = MutableStateFlow<Long?>(null)
+    val exerciseFk: StateFlow<Long?> = _exerciseFk.asStateFlow()
 
-    fun deleteExercise(exercise: Exercise) {
+ /**   init {
+        loadAllExercises(userId)
+    }
+**/
+    fun deleteExercise(exercise: Exercise, userId: Long) {
         viewModelScope.launch(Dispatchers.IO) {
+
             deleteExerciseUseCase.execute(exercise)
-            loadAllExercises()
+            loadAllExercises(userId)
 
         }
 
     }
 
-    private fun loadAllExercises() {
+    private fun loadAllExercises(userId: Long) {
         viewModelScope.launch (Dispatchers.IO) {
-            val exercises = getAllExercisesUseCase.execute()
+            val exercises = getAllExercisesUseCase.execute(userId)
             _exercisesFlow.value = exercises
 
         }
@@ -46,14 +51,15 @@ class ExerciseViewModel @Inject constructor(
 
     }
 
-    fun addNewExercise(exercise: Exercise) {
+    fun addNewExercise(exercise: Exercise,userId: Long) {
         viewModelScope.launch (Dispatchers.IO) {
 
             addNewExerciseUseCase.execute(exercise)
-            loadAllExercises()
+            loadAllExercises(userId)
         }
 
     }
+
 
     
 }
