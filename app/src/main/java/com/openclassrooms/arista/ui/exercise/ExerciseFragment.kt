@@ -170,7 +170,9 @@ class ExerciseFragment : Fragment(), DeleteExerciseInterface {
             viewModel.deleteExercise(it,userId)
                 Toast.makeText(
                     requireContext(),
-                    R.string.exercise)
+                    R.string.exercise,
+                    Toast.LENGTH_SHORT
+                ).show()
 
         }
     }
